@@ -1,0 +1,143 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    color: #1a1c1a
+}
+
+body {
+    background-color: #f3dfc1e7;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+}
+
+.topSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.containerWrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    order: 2;
+    border: #1a1c1a solid 1px;
+    height: 10rem;
+    width: 25rem;
+}
+
+.upperSection {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: flex-start;
+    bottom: 4rem;
+    order: 1;
+}
+
+.containerInner {
+    padding: 1rem 1rem 1rem 1rem;
+    height: 3.3rem;
+}
+
+.topSectionGap {
+    position: absolute;
+    display: flex;
+    order: 2;
+    height: 3.3rem;
+}
+
+.lowerSection {
+    display: flex;
+    justify-content: center;
+    height: 3.3rem;
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 1px;
+    right: 0;
+    /* left: 2.5%; */
+    width: 100%;
+    background-color: #1a1c1a;
+}
+
+.containerText {
+    font-size: 1.3rem;
+}
+
+.pageNum {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f3dfc1e7;
+}
+
+
+.titleSection {
+    margin-top: 1rem;
+}
+
+.titleWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: #1a1c1a solid 1px;
+    background-color: red;
+    height: 10rem;
+}
+
+
+.titleTxt {
+    display: flex;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    color: #1a1c1a;
+    font-size: 6.5rem;
+}
+
+.titleImg {
+    width: 10rem;
+    height: 10rem;
+}
+
+.titleImgShape {
+    width: 200px;
+    height: 200px;
+    
+    margin-top: 100px;
+    
+    transform: rotate(67.5deg) skewX(45deg) scaleY(cos(45deg));
+  }
+  
+  /* Headline Section */
+
+  .headlineSection {
+    margin-top: 1rem;
+    background-color: #1a1c1a;
+    display: flex;
+  }
+
+  .headlineTxt {
+    color: #f3dfc1e7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    
+  }
+
+  .headlineImg {
+    /* height: 250px; */
+    width: 100%;
+    background: transparent no-repeat center;
+    background-size: cover;
+  }
+
+
+
+.footer {
+    font-family: Arial, Helvetica, sans-serif;
+}

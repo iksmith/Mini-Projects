@@ -5,31 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Daily Bugle</title>
 
-    <link rel="stylesheet" href="/Daily Bugle/public/styles/styles.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 <body>
     <!-- Top of Newspaper -->
     <div class="topSection">
         <!-- Left -->
-        <div class="leftContainerWrapper">
-            <div class="leftContainerInner">
+        <div class="containerWrapper leftContainer">
+            <div class="containerInner">
                 <div class="upperSection">
-                    <h4>Doctor Octavius Breaks Out of Raft</h4>
+                    <h4 class="containerText">Doctor Octavius Breaks Out of Raft...Again!</h4>
                 </div>
-                <div class="lowerSection">
-                    <p>Page 3</p>
+
+                <div class="topSectionGap"></div>
+
+                <div class="lowerSection lowerSectionBC">
+                    <p class="pageNum">Page 3</p>
                 </div>
             </div>
         </div>
         <!-- Right -->
-        <div class="rightContainerWrapper">
-            <div class="rightContainerInner">
+        <div class="containerWrapper rightContainer">
+            <div class="containerInner">
                 <div class="upperSection">
-                    <h4>Miles Morales wins 2nd Spacebound Young Researchers Award</h4>
+                    <h4 class="containerText">Miles Morales wins 2nd Spacebound Young Researchers Award</h4>
                 </div>
-                <div class="lowerSection">
-                    <p>Page 4</p>
+
+                <div class="topSectionGap"></div>
+
+                <div class="lowerSection lowerSectionBC">
+                    <p class="pageNum">Page 4</p>
                 </div>
             </div>
         </div>
@@ -38,20 +46,44 @@
 
     <!-- Newspaper Title -->
     <div class="titleSection">
-
         <div class="titleWrapper">
 
-            <div class="leftTitle">
-                <h1>Daily</h1>
+            <div class="titleText">
+                <h1 class="titleTxt">Daily</h1>
             </div>
+
             <div class="titleLogo">
+                <img src="/img/Daily Bugle Horn Logo.png" alt="" class="titleImg">
+            </div>
 
+            <div class="titleText">
+                <h1 class="titleTxt">Bugle</h1>
             </div>
-            <div class="rightTitle">
-                <h1>Bugle</h1>
-            </div>
+
         </div>
+    </div>
 
+    <div class="headlineSection">
+        <div class="headlineWrapper">
+
+            <div class="headlineTitle">
+                <h1 class="headlineTxt">SPIDEY PALS!</h1>
+            </div>
+
+            <!-- Newspaper Image -->
+            <div class="headlineImgSection">
+                <img class="headlineImg" src="/img/SpideyPals.png" alt="">
+            </div>
+
+            <div class="headlineArticles">
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <h4 class="footer">EXCLUSIVE PHOTOS OF THE MENACE SPIDERMAN: PAGES 4-6</h4>
     </div>
 
 </body>
