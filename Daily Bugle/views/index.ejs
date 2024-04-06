@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Daily Bugle</title>
+<%- include("partials/header.ejs") %>
 
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css">
-
-</head>
 <body>
     <!-- Top of Newspaper -->
     <div class="topSection">
@@ -17,7 +7,7 @@
         <div class="containerWrapper leftContainer">
             <div class="containerInner">
                 <div class="upperSection">
-                    <h4 class="containerText">Doctor Octavius Breaks Out of Raft...Again!</h4>
+                    <h4 class="containerTxt">Doctor Octavius Breaks Out of Raft...Again!</h4>
                 </div>
 
                 <div class="topSectionGap"></div>
@@ -31,7 +21,7 @@
         <div class="containerWrapper rightContainer">
             <div class="containerInner">
                 <div class="upperSection">
-                    <h4 class="containerText">Miles Morales wins 2nd Spacebound Young Researchers Award</h4>
+                    <h4 class="containerTxt">Miles Morales wins 2nd Spacebound Young Researchers Award</h4>
                 </div>
 
                 <div class="topSectionGap"></div>
@@ -41,7 +31,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Newspaper Title -->
@@ -75,15 +64,44 @@
                 <img class="headlineImg" src="/img/SpideyPals.png" alt="">
             </div>
 
-            <div class="headlineArticles">
+            <div class="headlineArticle">
+
+                <div class="article">
+                    <div class="articleContainer">
+                        <h1 class="headlineTxtLow">SPIDERMAN, GREEN GOBLIN, DISCUSS NEXT PLOT!</h1>
+                    </div>
+                </div>
+
+                <!-- Add Article Button -->
+
+                <div class="btnSection">
+                    <!-- BUTTON -->
+                    <button onclick="window.location.href = '/edit';" class="addBtn">
+                        <div class="btnTxt">
+                            Add Article Below
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Added Articles -->
+                <div class="articleSection">
+                    <div class="addedArticle">
+                        <div class="articleContainer">
+                            <a href=""> <%= %> </a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
         </div>
     </div>
 
+
+
     <div class="footer">
-        <h4 class="footer">EXCLUSIVE PHOTOS OF THE MENACE SPIDERMAN: PAGES 4-6</h4>
+        <div class="footerTxt">
+            <h4 class="footer">EXCLUSIVE PHOTOS OF THE MENACE SPIDERMAN: PAGES 4-6</h4>
+        </div>
     </div>
 
 </body>

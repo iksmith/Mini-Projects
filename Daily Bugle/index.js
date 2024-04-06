@@ -24,6 +24,16 @@ app.get('/', (req, res) => {
     res.render(`index.ejs`)
 })
 
+app.get('/edit', (req, res) => {
+    res.render('edit.ejs');
+})
+
+
+app.post("/submit", (req, res)=> {
+    const { blogtitle } = req.body;
+    res.render(`index.ejs`, { blogTitle });
+});
+
 // Port
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

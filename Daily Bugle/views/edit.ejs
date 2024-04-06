@@ -1,0 +1,32 @@
+<%- include("partials/header.ejs") %>
+
+
+
+<body id="blogBody" style="background-color: white;">
+    <div class="upperEdit">
+        <div class="backBtn">
+            <button class="bBtn" onclick="window.location.href = '/';">Back</button>
+        </div>
+        <div class="deleteBtn">
+            <button class="dBtn" onclick="window.location.href = '/';">Delete Article</button>
+        </div>
+        
+    </div>
+    
+
+    <div class="blogBody">
+        <form action="/submit" method="POST">
+            <div class="bTitle">
+                <input class="blogTitle" name="aTitle" type="text" placeholder="Type Article Title..." value=""  required>
+            </div>
+            <div class="bTxt">
+                <textarea class="blogTxt" name="bTxt" type="text" placeholder="Type Article Here..." value="" required></textarea>
+            </div>
+            <div class="bSubmit">
+                <input class="submitBtn" type="submit" value="Post">
+            </div>
+        </form>
+    </div>
+
+</body>
+
