@@ -170,6 +170,15 @@ body {
     background-color: #2d2d2d;
   }
 
+  .articleSection {
+    background-color: #1a1c1a;
+  }
+
+  .articleTxt {
+    color: #f3dfc1e7;
+    text-align: center;
+  }
+
 /* Footer Section */
 .footer {
     display: flex;
@@ -189,7 +198,7 @@ body {
 
 
 /* Mobile View */
-@media (max-width:816px) {
+@media (max-width:833px) {
 
     .containerTxt {
         font-size: 1rem;

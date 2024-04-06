@@ -8,22 +8,33 @@
             <button class="bBtn" onclick="window.location.href = '/';">Back</button>
         </div>
         <div class="deleteBtn">
-            <button class="dBtn" onclick="window.location.href = '/';">Delete Article</button>
+            <% if (article && article.id) { %>
+
+                <!-- Delete Btn -->
+                <form action="/delete/<%= article.id %>" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="dBtn"> Delete Article </button>
+                </form>
+
+            <% } %>
+           
+            <!-- Need Delete Functionality --> 
+            
         </div>
         
     </div>
     
 
     <div class="blogBody">
-        <form action="/submit" method="POST">
+        <form action="<%= article.id ? '/update/' + article.id : '/publish' %>" method="POST">
             <div class="bTitle">
-                <input class="blogTitle" name="aTitle" type="text" placeholder="Type Article Title..." value=""  required>
+                <input class="blogTitle" name="aTitle" type="text" placeholder="Enter Article Title..." value="<%= article ? article.title : '' %>"  required>
             </div>
             <div class="bTxt">
-                <textarea class="blogTxt" name="bTxt" type="text" placeholder="Type Article Here..." value="" required></textarea>
+                <textarea class="blogTxt" name="aTxt" type="text" placeholder="Enter Article Here..." required><%= article ? article.content : '' %></textarea>
             </div>
             <div class="bSubmit">
-                <input class="submitBtn" type="submit" value="Post">
+                <input class="submitBtn" name="publish" type="submit" value="<%= article && article.id ? 'Update' : 'Publish' %>">
             </div>
         </form>
     </div>

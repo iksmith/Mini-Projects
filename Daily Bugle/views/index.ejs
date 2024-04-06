@@ -76,7 +76,7 @@
 
                 <div class="btnSection">
                     <!-- BUTTON -->
-                    <button onclick="window.location.href = '/edit';" class="addBtn">
+                    <button onclick="window.location.href = '/new-article';" class="addBtn">
                         <div class="btnTxt">
                             Add Article Below
                         </div>
@@ -87,7 +87,14 @@
                 <div class="articleSection">
                     <div class="addedArticle">
                         <div class="articleContainer">
-                            <a href=""> <%= %> </a>
+                                <% articles.forEach((article) => { %>
+                                <div class="articleBox">
+                                <a href="/edit/<%= article.id %>"> 
+                                    <h3 class="articleTxt"><%= article.title %></h3>
+                                </a>
+                                <p class="articleTxt"><%= article.content %></p>
+                            </div>
+                            <% }) %>
                         </div>
                     </div>
                 </div>
