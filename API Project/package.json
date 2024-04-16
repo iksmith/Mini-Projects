@@ -1,0 +1,17 @@
+{
+  "name": "api-project",
+  "version": "1.0.0",
+  "description": "Small Project for working with API's",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kaleb Smith",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}
