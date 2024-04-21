@@ -8,6 +8,8 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
+
+// Database Connection
 const db = new pg.Client ({
     user : "postgres",
     password : "1213",
@@ -15,14 +17,14 @@ const db = new pg.Client ({
     port : 5432,
     database : "game_reviews"
 }); 
-  
-// Connect Database after postgres setup 
+// Remove Comment when ready for Database
 // db.connect();
 
 
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {

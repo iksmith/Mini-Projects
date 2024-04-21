@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Arcade Archive 🎮</title>
-</head>
+<%- include('partials/header') %>
+
 <body>
 
     <!-- Navigation Section -->
-    <div class="navSection">
-        <div class="innerNav">
-            <div class="logo">
-                <!-- icon -->
-                <p>Kaleb's Arcade Archive</p>
-            </div>
-        </div>
-    </div>
+<%- include('partials/navbar') %>
 
     <!-- Main Section -->
     <div class="mainSection">
         <div class="innerMain">
-            <h2>Game Reviews</h2>
+            <div class="mainHeader">
+                <div class="sectionTitle">
+                    <h2>Game Reviews</h2>
+                </div>
+                <div class="addReview">
+                    <a href=""><span class="material-symbols-outlined addReviewBtn">add_circle</span></a>
+                </div>
+            </div>
+
             <div class="content">
                 <div class="innerContent">
-
                     <!-- Bring Review Section in from partials -->
-
+                    <%- include('partials/review') %>
                 </div>
             </div>
         </div>
