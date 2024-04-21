@@ -1,0 +1,20 @@
+{
+  "name": "game-reviews",
+  "version": "1.0.0",
+  "description": "A small project for creating game reviews using express, Postgres, and APIs. Also a bit of error handlnig",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kaleb Smith",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "body": "^5.1.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "parser": "^0.1.4",
+    "pg": "^8.11.5"
+  }
+}
