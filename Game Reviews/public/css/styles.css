@@ -4,6 +4,11 @@
     font-family:  "Play", "Roboto", arial;
 }
 
+body {
+   margin-left: 1rem;
+   margin-right: 1rem;
+}
+
 .logo {
     display: flex;
     justify-content: center;
@@ -16,7 +21,7 @@
     text-decoration: none;
 }
 
-/* Main Section */
+/* Main Page */
 .mainHeader {
     display: flex;
     justify-content: space-between;
@@ -36,3 +41,70 @@
     align-items: center;
 }
 
+/* Create Page */
+
+.createBody {
+    margin-top: 2rem;
+}
+
+.createInner {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* Remove this to readjust submit btn location */
+    width: 30rem;
+}
+
+.gameSelect {
+    margin-bottom: 1.5rem;
+}
+
+.gameSearch {
+    border-radius: 6px;
+    border: solid 1px #212121;
+}
+
+.platformSelect {
+    margin-bottom: 1.5rem;
+}
+
+.platformOpt {
+    border-radius: 6px;
+}
+
+.ratingSelect {
+    margin-bottom: 1.5rem;
+}
+
+.ratingOpt {
+    border-radius: 6px;
+    border: solid 1px #212121;
+}
+
+.reviewText {
+    margin-bottom: 1.5rem;
+}
+
+.textBox {
+    border-radius: 6px;
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.submitReview {
+    background-color: transparent;
+    color: #212121;
+    border: 1px solid #212121;
+    transition: ease-in-out .2s;
+    border-radius: 6px;
+}
+
+.submitReview:hover {
+    background-color: #212121;
+    color: white;
+    cursor: pointer;
+}
