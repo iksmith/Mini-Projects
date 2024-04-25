@@ -6,9 +6,11 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import axios from "axios";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 const port = 3000;
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,19 +23,29 @@ const db = new pg.Client ({
     password : "1213",
     host : "localhost",
     port : 5432,
-    database : "game_reviews"
+    database : "gameApp" // Must be the same as DB
 }); 
-// Remove Comment when ready for Database
-// db.connect();
+
+db.connect(err => {
+    if (err) {
+        console.error('Error connecting to Database: ', err.stack)
+    } else {
+        console.log('Connected to database')
+    }
+});
 
 // Giantbomb.com API Key - No Rate Limits
 const API_KEY = "972df4c2f27c4047bad59d46af3c50d92a83d377"
-const URL = `URL: https://www.giantbomb.com/api/game/[guid]/?api_key=${API_KEY}&format=json`
 
-
+//Giant Bomb API URL
+const URL = `URL: https://www.giantbomb.com/api/games/[guid]/?api_key=${API_KEY}&format=json` // I changed this from game to games. May want to confirm the difference
+const gameCoverURL = `/image`;
+const gameTitleURL = `/name`;
+const gameTitle = [];
+const gameCover = [];
 
 app.get('/', (req, res) => {
-    res.render('index.ejs')
+    res.render('index.ejs');
 })
 
 app.get('/index', (req, res) => {
@@ -44,33 +56,69 @@ app.get('/create.ejs', (req, res) => {
     res.render('create.ejs');
 });
 
-//  Game API: https://www.giantbomb.com/api/documentation/ - Need to validate
 
-// Functions
 
-function searchGame() {
-    $('searchInput').addEventListener('input', function(e) {
-        let searchGame = e.target.value;
-        if (searchGame.length > 2) { // <- This starts search after 2 or more char
-            fetch(URL + `&query=${searchGame}&resources=game`)
-            .then(response => response.json())
-            .then(games => {
-                //clear previous results
-                $('searchResults').innerHTML = '';
-                // Display new results
-                games.forEach(game => {
-                    let searchResults = $('searchResults');
-                    searchResults.textContent = game.name; // Displays Game Name
-                    searchResults.appendchild(searchResults);
-                });
+// Getting Game Function
+async function getGameInfo(gameTitleURL) {
+    try {
+        const response = await axios.get(`https://www.giantbomb.com/api/search/?api_key=${API_KEY}&format=json&query=${gameTitleURL}&resources=game`);
+        const games = response.data.results;
+
+        console.log(games);
+
+        if (games.length > 0) {
+            return games.map(game => {
+
+                const coverArt = game.image && game.image.thumb_url ? game.image.thumb_url : null;
+
+                return {
+                    name: game.name,
+                    cover: coverArt
+                };
             });
-        } 
-    });
+        } else {
+            return []; // No results found
+        }
+
+    } catch (error) {
+        console.error(`Error fetching game info: `, error);
+        return [];
+    };
 }
 
+getGameInfo(`Among Us`);
 
 
-// Call Funciton to Search for Game Here
+// Search Function
+app.get('/search', (req, res) => {
+    const searchTerm = req.query.term;
+    if (!searchTerm) {
+        return res.status(400).json(
+            {
+                error: 'Search term required'
+            }
+        );
+    }
+    const query = `
+    SELECT * FROM games
+    Where name LIKE ?
+    `;
+    // Partial Matches with %
+    const searchValue = `%${searchTerm}%`;
+    db.query(query, [searchValue, searchValue],
+        (err, results) => {
+            if (err) {
+                console.error(`Error executing search query: `,  err.stack);
+                return res.status(500).json (
+                    {
+                        error: 'Internal Server Error'
+                    }
+                );
+            }
+            res.json(results);
+        }
+    );
+});
 
 
 // Start the server

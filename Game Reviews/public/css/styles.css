@@ -60,6 +60,17 @@ body {
 }
 
 .gameSearch {
+    display: flex;
+    border-radius: 6px;
+    border: solid 1px #212121;
+}
+
+.gameSelectBtn {
+    display: flex;
+    flex-direction: row;
+}
+
+.titleOpt {
     border-radius: 6px;
     border: solid 1px #212121;
 }
