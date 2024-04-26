@@ -5,17 +5,23 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import axios from "axios";
+import dotenv from "dotenv";
 
 
 const app = express();
 const port = 3000;
 
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+
+dotenv.config({ path: `.env.${process.env}` });
+dotenv.config();
 
 // Database Connection
 const db = new pg.Client ({
@@ -35,14 +41,17 @@ db.connect(err => {
 });
 
 // Giantbomb.com API Key - No Rate Limits
-const API_KEY = "972df4c2f27c4047bad59d46af3c50d92a83d377"
+//todo const API_KEY = process.env.API_KEY;
+const API_KEY = "972df4c2f27c4047bad59d46af3c50d92a83d377";
+console.log("API KEY: ", API_KEY);
+
 
 //Giant Bomb API URL
-const URL = `URL: https://www.giantbomb.com/api/games/[guid]/?api_key=${API_KEY}&format=json` // I changed this from game to games. May want to confirm the difference
-const gameCoverURL = `/image`;
-const gameTitleURL = `/name`;
-const gameTitle = [];
-const gameCover = [];
+const URL = `https://www.giantbomb.com/api/games/[guid]/?api_key=${API_KEY}&format=json`; // I changed this from game to games. May want to confirm the difference
+const gameCover = `/image`;
+const gameTitle = `/name`;
+const gameTitleArr = [];
+const gameCoverArr = [];
 
 app.get('/', (req, res) => {
     res.render('index.ejs');
@@ -57,11 +66,33 @@ app.get('/create.ejs', (req, res) => {
 });
 
 
+const fetchGamesAndStore = async () => {
+    try {
+        const response = await axios.get(URL); // Make sure URL is properly defined elsewhere in your code
+
+        // Loop through each game in the response
+        for (const game of response.data.results) {
+            await db.query(
+                'INSERT INTO games (gameName, coverImage) VALUES ($1, $2)',
+                [game.name, game.image.thumb_url] // Assuming game.image.thumb_url is the correct path to the image URL
+            );
+        }
+
+    } catch (error) {
+        console.error('Failed to fetch or store games', error);
+
+    } finally {
+
+        db.end(); // Close db connection
+    }
+};
+
+fetchGamesAndStore();
 
 // Getting Game Function
-async function getGameInfo(gameTitleURL) {
+async function getGameInfo(gameTitle) {
     try {
-        const response = await axios.get(`https://www.giantbomb.com/api/search/?api_key=${API_KEY}&format=json&query=${gameTitleURL}&resources=game`);
+        const response = await axios.get(`https://www.giantbomb.com/api/search/?api_key=${API_KEY}&format=json&query=${gameTitle}&resources=game`);
         const games = response.data.results;
 
         console.log(games);
@@ -86,42 +117,34 @@ async function getGameInfo(gameTitleURL) {
     };
 }
 
-getGameInfo(`Among Us`);
+getGameInfo(gameTitle);
 
 
-// Search Function
-app.get('/search', (req, res) => {
-    const searchTerm = req.query.term;
-    if (!searchTerm) {
-        return res.status(400).json(
-            {
-                error: 'Search term required'
-            }
-        );
-    }
-    const query = `
-    SELECT * FROM games
-    Where name LIKE ?
-    `;
-    // Partial Matches with %
-    const searchValue = `%${searchTerm}%`;
-    db.query(query, [searchValue, searchValue],
-        (err, results) => {
-            if (err) {
-                console.error(`Error executing search query: `,  err.stack);
-                return res.status(500).json (
-                    {
-                        error: 'Internal Server Error'
-                    }
-                );
-            }
-            res.json(results);
+// Game Search
+
+    app.get('/search-games', async (req, res) => {
+        const gameTitle = req.query.title;
+
+        if (!gameTitle) {
+            return res.status(400).json({ error: 'Game title required' });
         }
-    );
-});
+
+        try {
+            const games = await getGameInfo(gameTitle);
+            res.json(games);
+
+        } catch (error) {
+            console.error('Failed to get game info:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    });
 
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+
+
+
+
+// PORT
+    app.listen(port, () => {
+        console.log(`Server running on http://localhost:${port}`);
+    });

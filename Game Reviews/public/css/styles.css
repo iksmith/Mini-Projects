@@ -56,18 +56,34 @@ body {
 }
 
 .gameSelect {
+    display: flex;
     margin-bottom: 1.5rem;
+    flex-direction: column;
+}
+
+.searchBar {
+    display: flex;
+}
+
+#searchBtn {
+    background-color: white;
+    border-radius: 0px 6px 6px 0px;
+    border: 1px solid #212121;
+    transition: ease-in-out .2s;
+}
+
+#searchBtn:hover {
+    background-color: #212121;
+    color: white;
+    cursor: pointer;
 }
 
 .gameSearch {
     display: flex;
-    border-radius: 6px;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 6px 0px 0px 6px;
     border: solid 1px #212121;
-}
-
-.gameSelectBtn {
-    display: flex;
-    flex-direction: row;
 }
 
 .titleOpt {

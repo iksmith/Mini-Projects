@@ -7,11 +7,18 @@
 <div class="createBody">
     <div class="createInner">
         <form action="" method="POST">
+
                 <div class="gameSelect">
+                    <div class="sectionName">
+                        <p>Game:</p>
+                    </div>
                     <!-- This should also generate cover art -->
-                    <p>Game:</p>
-                    <input class="gameSearch" type="search" name="" id="searchInput" placeholder="Search Games" size="68" style="height: 2rem">
+                    <div class="searchBar">
+                        <input class="gameSearch" type="text" name="" id="searchInput" placeholder="Search Games" size="60" style="height: 2rem">
+                        <button type="button" name="submitSearch" id="searchBtn">Search</button>
+                    </div>
                 </div>
+                <div id="gameResults"></div>
 
                 <div class="titleSection">
                     <p>Review Title:</p>
@@ -37,7 +44,7 @@
                     <p>Review:</p>
                     <textarea class="textBox" name="" id="" cols="68" rows="10" style="resize: none;" placeholder="Enter Review Here..."></textarea>
                 </div>
-                
+
                 <div class="submitBtn">
                     <button class="submitReview" type="submit" style="height: 2rem;">Submit</button>
                 </div>
