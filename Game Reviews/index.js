@@ -19,9 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-// dotenv.config({ path: `.env.${process.env}` });
-// dotenv.config();
-
 // Database Connection
 const db = new pg.Client ({
     user : "postgres",
@@ -40,32 +37,36 @@ db.connect(err => {
 });
 
 // Giantbomb.com API Key - No Rate Limits
-//todo const API_KEY = process.env.API_KEY;
 const API_KEY = "972df4c2f27c4047bad59d46af3c50d92a83d377";
-
+const guid = `/guid`;
 
 //Giant Bomb API URL
- 
 const gameTitle = `/name`;
-const gameTitleArr = [];
-const gameCoverArr = [];
-const gameGuid = `/guid`;
+const gameCover = `/image`;
+const selectedGame = [];
+const selectedArt = [];
 const baseURL = `https://www.giantbomb.com/api/games/?api_key=${API_KEY}&format=json`;
-const fields = 'name,image';
 const URL = `${baseURL}$fieldList=${fields}`;
+const fields = 'name,image';
 
 
+// Render Home
 app.get('/', (req, res) => {
     res.render('index.ejs');
 })
 
+// Render back home when clicked. Could also use redirect
 app.get('/index', (req, res) => {
     res.render('index.ejs')
 })
 
+// Render Create Page
 app.get('/create.ejs', (req, res) => {
     res.render('create.ejs');
 });
+
+
+
 
 // PORT
     app.listen(port, () => {
