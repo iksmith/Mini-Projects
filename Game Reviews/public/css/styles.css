@@ -61,29 +61,33 @@ body {
     flex-direction: column;
 }
 
-.searchBar {
+#searchBar, input {
     display: flex;
+    border-radius: 6px;
+    border: solid 1px #212121;
+    width: 30rem;
+    height: 2rem;
 }
 
-#searchBtn {
+#gameList:focus {
+    position: absolute;
+    display: block;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+    right: 0;
     background-color: white;
-    border-radius: 0px 6px 6px 0px;
-    border: 1px solid #212121;
-    transition: ease-in-out .2s;
 }
 
-#searchBtn:hover {
-    background-color: #212121;
-    color: white;
+#gameList div {
+    padding: 10px;
     cursor: pointer;
 }
 
-.gameSearch {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    border-radius: 6px 0px 0px 6px;
-    border: solid 1px #212121;
+#gameList div:hover {
+    background-color: #f6f6f6;
 }
 
 .titleOpt {

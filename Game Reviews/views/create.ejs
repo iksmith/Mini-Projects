@@ -8,46 +8,48 @@
     <div class="createInner">
         <form action="" method="POST">
 
-                <div class="gameSelect">
-                    <div class="sectionName">
-                        <p>Game:</p>
+            <div class="gameSelect">
+                <p>Game:</p>
+                <!-- Input Search -->  
+                <div class="searchFilter">
+                    <input type="text" name="" id="searchBar" placeholder="Search Games">
+                    <div id="gameList" style="display: none">
+                        <!-- Dynamic List Here -->
                     </div>
-                    <!-- This should also generate cover art -->
-                    <div class="searchBar">
-                        <input class="gameSearch" type="text" name="" id="searchInput" placeholder="Search Games" size="60" style="height: 2rem">
-                        <button type="button" name="submitSearch" id="searchBtn">Search</button>
-                    </div>
-                </div>
-                <div id="gameResults"></div>
+                </div>            
+            </div>
 
-                <div class="titleSection">
-                    <p>Review Title:</p>
-                    <input class="titleOpt" type="text" name="" id="" placeholder="Enter Title Here..." size="68" style="height: 2rem;">
-                </div>
+            <div class="titleSection">
+                <p>Review Title:</p>
+                <input class="titleOpt" type="text" name="" id="" placeholder="Enter Title Here..." size="68" style="height: 2rem;">
+            </div>
 
-                <div class="platformSelect">
-                    <p>System:</p>
-                    <select class="platformOpt" name="system" id="systemSelect" style="height: 2rem;">
-                        <option value="playstation">Playstation</option>
-                        <option value="xbox">Xbox</option>
-                        <option value="nintendo">Nintendo</option>
-                        <option value="pc">PC</option>
-                    </select>         
-                </div>
+            <div class="platformSelect">
+                <p>System:</p>
+                <select class="platformOpt" name="system" id="systemSelect" style="height: 2rem;">
+                    <option value="playstation">Playstation</option>
+                    <option value="xbox">Xbox</option>
+                    <option value="nintendo">Nintendo</option>
+                    <option value="pc">PC</option>
+                </select>         
+            </div>
 
-                <div class="ratingSelect">
-                    <p>Rating:</p>
-                    <input class="ratingOpt" type="number" name="" id="" min="1" max="10" placeholder="#" style="height: 2rem;">
-                </div>
+            <div class="ratingSelect">
+                <p>Rating:</p>
+                <input class="ratingOpt" type="number" name="" id="" min="1" max="10" placeholder="#" style="height: 2rem;">
+            </div>
 
-                <div class="reviewText">
-                    <p>Review:</p>
-                    <textarea class="textBox" name="" id="" cols="68" rows="10" style="resize: none;" placeholder="Enter Review Here..."></textarea>
-                </div>
+            <div class="reviewText">
+                <p>Review:</p>
+                <textarea class="textBox" name="" id="" cols="68" rows="10" style="resize: none;" placeholder="Enter Review Here..."></textarea>
+            </div>
 
-                <div class="submitBtn">
-                    <button class="submitReview" type="submit" style="height: 2rem;">Submit</button>
-                </div>
+            <div class="submitBtn">
+                <button class="submitReview" type="submit" style="height: 2rem;">Submit</button>
+            </div>
+
         </form>
     </div>
 </div>
+
+<script src="main.js"></script>

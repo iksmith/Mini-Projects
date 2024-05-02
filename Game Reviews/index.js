@@ -36,20 +36,6 @@ db.connect(err => {
     }
 });
 
-// Giantbomb.com API Key - No Rate Limits
-const API_KEY = "972df4c2f27c4047bad59d46af3c50d92a83d377";
-const guid = `/guid`;
-
-//Giant Bomb API URL
-const gameTitle = `/name`;
-const gameCover = `/image`;
-const selectedGame = [];
-const selectedArt = [];
-const baseURL = `https://www.giantbomb.com/api/games/?api_key=${API_KEY}&format=json`;
-const URL = `${baseURL}$fieldList=${fields}`;
-const fields = 'name,image';
-
-
 // Render Home
 app.get('/', (req, res) => {
     res.render('index.ejs');
@@ -66,9 +52,28 @@ app.get('/create.ejs', (req, res) => {
 });
 
 
+//Open Critic API
+const options = {
+  method: 'GET',
+  url: 'https://opencritic-api.p.rapidapi.com/game/search',
+  params: {
+    criteria: 'the witcher 3'
+  },
+  headers: {
+    'X-RapidAPI-Key': 'af3230273emshdd8df12353f7329p16f904jsn4bd0a0ff911e',
+    'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
+  }
+};
+
+try {
+	const response = await axios.request(options);
+	console.log(response.data);
+} catch (error) {
+	console.error(error);
+}
 
 
 // PORT
     app.listen(port, () => {
-        console.log(`Server running on http://localhost:${port}`);
+        console.log(`Server running successfully on: http://localhost:${port}`);
     });
